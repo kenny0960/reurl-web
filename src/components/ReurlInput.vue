@@ -5,6 +5,7 @@
       type="text"
       class="form-control"
       placeholder="https://www.google.com"
+      @keydown.enter="handleUrlSubmit"
     />
     <button class="btn btn-primary" @click="handleUrlSubmit" type="button">
       <i class="bi bi-search"></i>
