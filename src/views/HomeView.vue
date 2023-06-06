@@ -6,13 +6,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
 import ReurlInput from "@/components/ReurlInput.vue";
+import { Component, Vue } from "vue-facing-decorator";
 
-export default defineComponent({
-  name: "HomeView",
+@Component({
   components: {
     ReurlInput,
   },
-});
+})
+export default class HomeView extends Vue {}
 </script>

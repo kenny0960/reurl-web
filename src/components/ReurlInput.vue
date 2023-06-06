@@ -3,14 +3,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { Component, Vue } from "vue-facing-decorator";
 
-export default defineComponent({
-  name: "ReurlInput",
-  props: {
-    msg: String,
-  },
-});
+@Component
+export default class ReurlInput extends Vue {}
 </script>
 
 <style scoped lang="scss">
