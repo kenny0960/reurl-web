@@ -12,10 +12,16 @@ import store from "@/store";
 @Module({ dynamic: true, store: store, name: "reurlModule" })
 class ReurlModule extends VuexModule implements ReurlState {
   public url = "";
+  public isUrlValid = true;
 
   @Mutation
   private SET_URL(url: string): void {
     this.url = url;
+  }
+
+  @Mutation
+  private SET_URL_VALID(isUrlValid: boolean): void {
+    this.isUrlValid = isUrlValid;
   }
 
   @Action
@@ -28,6 +34,13 @@ class ReurlModule extends VuexModule implements ReurlState {
     } finally {
       // TODO 移除載入中
     }
+  }
+
+  @Action
+  public validateUrl(url: string): void {
+    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+    const isUrlValid = urlRegex.test(url);
+    this.SET_URL_VALID(isUrlValid);
   }
 
   @Action
