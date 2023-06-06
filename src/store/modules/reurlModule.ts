@@ -19,6 +19,18 @@ class ReurlModule extends VuexModule implements ReurlState {
   }
 
   @Action
+  public async postUrl(url: string): Promise<void> {
+    try {
+      // TODO 載入中
+      console.log(url);
+    } catch (apiError) {
+      // TODO 錯誤處理
+    } finally {
+      // TODO 移除載入中
+    }
+  }
+
+  @Action
   public setUrl(url: string): void {
     this.SET_URL(url);
   }
