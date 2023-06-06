@@ -1,5 +1,10 @@
 <template>
-  <div class="reurl-input">Hello World</div>
+  <div class="reurl-input input-group">
+    <input type="text" class="form-control" />
+    <button class="btn btn-primary" type="button">
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
 </template>
 
 <script lang="ts">
