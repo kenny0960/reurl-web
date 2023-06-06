@@ -1,6 +1,11 @@
 <template>
   <div class="reurl-input input-group">
-    <input v-model="url" type="text" class="form-control" />
+    <input
+      v-model="url"
+      type="text"
+      class="form-control"
+      placeholder="https://www.google.com"
+    />
     <button class="btn btn-primary" @click="handleUrlSubmit" type="button">
       <i class="bi bi-search"></i>
     </button>
@@ -21,13 +26,16 @@ export default class ReurlInput extends Vue {
     reurlModule.setUrl(url);
   }
 
+  get isUrlValid(): boolean {
+    return reurlModule.isUrlValid;
+  }
+
   public async handleUrlSubmit(): Promise<void> {
-    await reurlModule.postUrl(reurlModule.url);
+    reurlModule.validateUrl(this.url);
+
+    if (this.isUrlValid === true) {
+      await reurlModule.postUrl(reurlModule.url);
+    }
   }
 }
 </script>
-
-<style scoped lang="scss">
-.reurl-input {
-}
-</style>
