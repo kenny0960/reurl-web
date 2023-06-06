@@ -1,9 +1,10 @@
-import { createStore } from "vuex";
+import Vuex from "vuex";
 
-export default createStore({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {},
-});
+import RootState from "@/interfaces/RootState";
+
+/*
+  Ideally if all your modules are dynamic
+  then your store is registered initially
+  as a completely empty object
+ */
+export default new Vuex.Store<RootState>({});
