@@ -12,14 +12,17 @@
       <i class="bi bi-send"></i>
     </button>
     <button
-      data-bs-toggle="tooltip"
-      data-bs-placement="top"
-      title="QR Code"
+      data-bs-toggle="modal"
+      data-bs-target="#QRCodeModal"
       class="btn border text-primary"
-      @click="showQRCodePopup"
       type="button"
     >
-      <i class="bi bi-qr-code"></i>
+      <i
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="QR Code"
+        class="bi bi-qr-code"
+      ></i>
     </button>
     <button
       data-bs-toggle="tooltip"
@@ -31,14 +34,42 @@
     >
       <i class="bi bi-clipboard"></i>
     </button>
+    <div
+      class="modal fade"
+      id="QRCodeModal"
+      tabindex="-1"
+      aria-labelledby="QRCodeModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <QRCodeVue3 :width="200" :height="200" :value="reurl" />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-facing-decorator";
 import reurlModule from "@/store/modules/reurlModule";
+import QRCodeVue3 from "qrcode-vue3";
 
-@Component
+@Component({
+  components: {
+    QRCodeVue3,
+  },
+})
 export default class ReurlSuccessResult extends Vue {
   get reurl(): string {
     return reurlModule.reurl;
@@ -46,10 +77,6 @@ export default class ReurlSuccessResult extends Vue {
 
   public openReurl(): void {
     window.open(this.reurl, "_blank");
-  }
-
-  public showQRCodePopup(): void {
-    // TODO 顯示 QR Code 彈窗
   }
 
   public copyReurl(): void {
