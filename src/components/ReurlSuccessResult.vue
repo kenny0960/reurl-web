@@ -28,7 +28,7 @@ export default class ReurlSuccessResult extends Vue {
   }
 
   public openReurl(): void {
-    // TODO 打開短網址頁面
+    window.open(this.reurl, "_blank");
   }
 
   public showQRCodePopup(): void {
@@ -36,7 +36,14 @@ export default class ReurlSuccessResult extends Vue {
   }
 
   public copyReurl(): void {
-    // TODO 複製短網址
+    navigator.clipboard
+      .writeText(this.reurl)
+      .then((): void => {
+        // TODO 顯示複製成功訊息
+      })
+      .catch((): void => {
+        // TODO 顯示複製失敗訊息
+      });
   }
 }
 </script>
