@@ -1,17 +1,34 @@
 <template>
   <div class="reurl-input input-group">
     <input type="text" class="form-control" :disabled="true" :value="reurl" />
-    <button class="btn border text-primary" @click="openReurl" type="button">
+    <button
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Go"
+      class="btn border text-primary"
+      @click="openReurl"
+      type="button"
+    >
       <i class="bi bi-send"></i>
     </button>
     <button
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="QR Code"
       class="btn border text-primary"
       @click="showQRCodePopup"
       type="button"
     >
       <i class="bi bi-qr-code"></i>
     </button>
-    <button class="btn border text-primary" @click="copyReurl" type="button">
+    <button
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="複製到剪貼簿"
+      class="btn border text-primary"
+      @click="copyReurl"
+      type="button"
+    >
       <i class="bi bi-clipboard"></i>
     </button>
   </div>

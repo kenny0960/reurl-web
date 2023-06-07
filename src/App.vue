@@ -4,6 +4,20 @@
   </div>
 </template>
 
+<script lang="ts">
+import { Component, Vue } from "vue-facing-decorator";
+import { Tooltip } from "bootstrap";
+
+@Component
+export default class App extends Vue {
+  public created(): void {
+    new Tooltip(document.body, {
+      selector: "[data-bs-toggle='tooltip']",
+    });
+  }
+}
+</script>
+
 <style lang="scss">
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
