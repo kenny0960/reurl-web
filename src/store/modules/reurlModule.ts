@@ -1,3 +1,4 @@
+import axios, { AxiosResponse } from "axios";
 import {
   Action,
   getModule,
@@ -29,7 +30,18 @@ class ReurlModule extends VuexModule implements ReurlState {
   public async postUrl(url: string): Promise<void> {
     try {
       commonModule.setLoading(true);
-      console.log(url);
+      const urlObject: URL = new URL(url);
+      const response: AxiosResponse = await axios({
+        method: "POST",
+        url: "/shorten",
+        data: {
+          scheme: urlObject.protocol,
+          domain: urlObject.host,
+          path: urlObject.pathname,
+        },
+      });
+      // TODO 設定結果
+      console.log(response);
     } catch (apiError) {
       // TODO 錯誤處理
     } finally {
