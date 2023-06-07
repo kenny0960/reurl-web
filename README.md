@@ -1,29 +1,16 @@
-# reurl
+# reurl-web
 
-## Project setup
+### 設定環境變數檔
+```
+cp .env.example .evn
+```
+
+## 安裝套件
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
+### 編譯 bundle 檔案
 ```
 npm run build
 ```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
