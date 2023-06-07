@@ -10,15 +10,27 @@ import {
 import ReurlState from "@/interfaces/ReurlState";
 import store from "@/store";
 import commonModule from "@/store/modules/commonModule";
+import Result from "@/interfaces/Result";
 
 @Module({ dynamic: true, store: store, name: "reurlModule" })
 class ReurlModule extends VuexModule implements ReurlState {
   public url = "";
   public isUrlValid = true;
+  public result: Result | null = null;
 
   @Mutation
   private SET_URL(url: string): void {
     this.url = url;
+  }
+
+  @Mutation
+  private SET_RESULT(result: Result): void {
+    this.result = result;
+  }
+
+  @Mutation
+  private RESET_RESULT(): void {
+    this.result = null;
   }
 
   @Mutation
@@ -31,7 +43,7 @@ class ReurlModule extends VuexModule implements ReurlState {
     try {
       commonModule.setLoading(true);
       const urlObject: URL = new URL(url);
-      const response: AxiosResponse = await axios({
+      const { data }: AxiosResponse = await axios({
         method: "POST",
         url: "/shorten",
         data: {
@@ -40,8 +52,10 @@ class ReurlModule extends VuexModule implements ReurlState {
           path: urlObject.pathname,
         },
       });
-      // TODO 設定結果
-      console.log(response);
+      this.setResult({
+        ...data,
+        isSuccess: JSON.parse(data.isSuccess),
+      });
     } catch (apiError) {
       // TODO 錯誤處理
     } finally {
@@ -59,6 +73,16 @@ class ReurlModule extends VuexModule implements ReurlState {
   @Action
   public setUrl(url: string): void {
     this.SET_URL(url);
+  }
+
+  @Action
+  public setResult(result: Result): void {
+    this.SET_RESULT(result);
+  }
+
+  @Action
+  public resetResult(): void {
+    this.RESET_RESULT();
   }
 }
 
