@@ -44,6 +44,7 @@ export default class ReurlInput extends Vue {
   }
 
   public async handleUrlSubmit(): Promise<void> {
+    reurlModule.resetResult();
     reurlModule.validateUrl(this.url);
 
     if (this.isUrlValid === true) {
