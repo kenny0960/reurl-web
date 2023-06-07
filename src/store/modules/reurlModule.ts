@@ -8,6 +8,7 @@ import {
 
 import ReurlState from "@/interfaces/ReurlState";
 import store from "@/store";
+import commonModule from "@/store/modules/commonModule";
 
 @Module({ dynamic: true, store: store, name: "reurlModule" })
 class ReurlModule extends VuexModule implements ReurlState {
@@ -27,12 +28,12 @@ class ReurlModule extends VuexModule implements ReurlState {
   @Action
   public async postUrl(url: string): Promise<void> {
     try {
-      // TODO 載入中
+      commonModule.setLoading(true);
       console.log(url);
     } catch (apiError) {
       // TODO 錯誤處理
     } finally {
-      // TODO 移除載入中
+      commonModule.setLoading(false);
     }
   }
 

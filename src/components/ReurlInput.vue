@@ -4,11 +4,18 @@
       v-model="url"
       type="text"
       class="form-control"
+      :disabled="isLoading"
       placeholder="https://www.google.com"
       @keydown.enter="handleUrlSubmit"
     />
-    <button class="btn btn-primary" @click="handleUrlSubmit" type="button">
-      <i class="bi bi-search"></i>
+    <button
+      :disabled="isLoading"
+      class="btn btn-primary"
+      @click="handleUrlSubmit"
+      type="button"
+    >
+      <i v-if="isLoading" class="spinner-border spinner-border-sm"></i>
+      <i v-else class="bi bi-search"></i>
     </button>
   </div>
 </template>
@@ -16,9 +23,14 @@
 <script lang="ts">
 import { Component, Vue } from "vue-facing-decorator";
 import reurlModule from "@/store/modules/reurlModule";
+import commonModule from "@/store/modules/commonModule";
 
 @Component
 export default class ReurlInput extends Vue {
+  get isLoading(): boolean {
+    return commonModule.isLoading;
+  }
+
   get url(): string {
     return reurlModule.url;
   }
