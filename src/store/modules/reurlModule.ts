@@ -18,6 +18,13 @@ class ReurlModule extends VuexModule implements ReurlState {
   public isUrlValid = true;
   public result: Result | null = null;
 
+  get reurl(): string {
+    if (this.result === null) {
+      return "";
+    }
+    return `${process.env.VUE_APP_REURL_HOST_URI}/${this.result.shortenStr}`;
+  }
+
   @Mutation
   private SET_URL(url: string): void {
     this.url = url;
