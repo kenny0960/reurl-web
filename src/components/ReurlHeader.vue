@@ -1,13 +1,13 @@
 <template>
-  <div class="fs-1 text-primary">
+  <header class="py-3 fs-1 text-primary">
     <img src="@/assets/logo.png" />
     <span class="text-dark">短網址</span>
-  </div>
+  </header>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-facing-decorator";
 
 @Component
-export default class ReurlTitle extends Vue {}
+export default class ReurlHeader extends Vue {}
 </script>
