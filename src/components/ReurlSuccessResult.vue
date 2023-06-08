@@ -52,7 +52,12 @@
             ></button>
           </div>
           <div class="modal-body">
-            <QRCodeVue3 :width="200" :height="200" :value="reurl" />
+            <QRCodeVue3
+              :width="200"
+              :height="200"
+              :value="reurl"
+              :image="require('@/assets/logo.png')"
+            />
           </div>
         </div>
       </div>

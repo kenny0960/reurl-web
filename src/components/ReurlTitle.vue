@@ -1,6 +1,7 @@
 <template>
-  <div class="reurl-title">
-    <span class="text-primary fs-1">短網址</span>
+  <div class="fs-1 text-primary">
+    <img src="@/assets/logo.png" />
+    <span class="text-dark">短網址</span>
   </div>
 </template>
 
