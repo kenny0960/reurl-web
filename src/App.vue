@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="d-flex justify-content-center align-items-center vh-75">
     <router-view />
   </div>
 </template>
@@ -27,5 +27,11 @@ export default class App extends Vue {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.vw-50 {
+  width: 50vw;
+}
+.vh-75 {
+  height: 75vh;
 }
 </style>

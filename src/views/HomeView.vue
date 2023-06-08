@@ -1,10 +1,8 @@
 <template>
-  <div class="vw-100 mx-5">
+  <div class="vw-50">
     <ReurlHeader />
-    <div class="container">
-      <ReurlInput />
-      <ReurlResult />
-    </div>
+    <ReurlInput />
+    <ReurlResult />
     <ReurlFooter />
   </div>
 </template>
